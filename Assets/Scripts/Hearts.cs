@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hearts : MonoBehaviour
 {
+    //Player Hearts GameObject Animation Controller
     private Animator animator;
     public PlayerController player;
     void Start()

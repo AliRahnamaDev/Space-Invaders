@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
-
 public class Enemybullets : MonoBehaviour
 {
     Rigidbody2D rb2d;
-    public   float speed = 5f;
+    public float speed = 5f;
     public float lifeTime = 3f; 
     void Start()
     {

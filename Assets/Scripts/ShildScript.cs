@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShildScript : MonoBehaviour
 {
+    //Shild Script Manage Animations and Health
     Animator animator;
     public int Health = 6;
     void Start()

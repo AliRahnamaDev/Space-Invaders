@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public TextManager textmanager;
+    //This script Manage Player bullet Movement Add score And Reduce EnemyCount
+    public ScoreManager scoreManager;
     public static int score;
     private Rigidbody2D rb;
     public static float speed=20;
@@ -14,10 +13,9 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-            
             gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             rb = GetComponent<Rigidbody2D>();
-            textmanager = FindObjectOfType<TextManager>();
+            scoreManager = FindObjectOfType<ScoreManager>();
             Destroy(gameObject, lifeTime);
     }
     
@@ -31,7 +29,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             gameManager.EnemyCount--;
-            textmanager.AddScore(10);
+            scoreManager.AddScore(10);
             Destroy(other.gameObject);
             Destroy(gameObject);     
         }
@@ -41,5 +39,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-//df
+
 }

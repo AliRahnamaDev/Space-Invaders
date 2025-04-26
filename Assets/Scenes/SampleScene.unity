@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 398620617}
   - component: {fileID: 398620618}
   m_Layer: 0
-  m_Name: textManager
+  m_Name: ScoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6352,7 +6352,7 @@ GameObject:
   - component: {fileID: 1742206053}
   - component: {fileID: 1742206052}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DeadZone
   m_TagString: DeadZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6743,7 +6743,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 67687b5b795d6eb4e856fb7924b94dc8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2243869873f8869449aa3261824130b6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

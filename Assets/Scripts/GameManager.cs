@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +14,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnEnemies();
-         EnemyCount = rows * columns;
+        EnemyCount = rows * columns;
     }
 
     private void Update()
     {
-        
+        if (EnemyCount == 0)
+        {
+            SpawnEnemies();
+            EnemyCount = rows * columns;
+        }
     }
 
     void SpawnEnemies()
@@ -29,7 +32,9 @@ public class GameManager : MonoBehaviour
         {
             for (int col = 0; col < columns; col++)
             {
+                //Set Enemies Positon
                 Vector2 spawnPos = new Vector2(startPosition.x + (col * spacingX), startPosition.y - (row * spacingY));
+                //Change Enemies Based on Rows
                 int typeIndex = (row / ChangeEnemiesperRow) % enemyPrefabs.Length;
                 GameObject prefab = enemyPrefabs[typeIndex];
                 GameObject enemy = Instantiate(prefab, spawnPos, transform.rotation, enemyParent);

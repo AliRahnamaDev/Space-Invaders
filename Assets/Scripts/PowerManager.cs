@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerManager : MonoBehaviour
@@ -37,5 +36,4 @@ public class PowerManager : MonoBehaviour
                 Destroy(currentObject);
         }
     }
-//dsfasdfs
 }

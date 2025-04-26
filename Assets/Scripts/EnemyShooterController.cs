@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyShooterController : MonoBehaviour
 {
+    
     public GameObject bulletPrefab;
     
     [SerializeField]public int numberOfShooters = 3;
@@ -23,6 +24,7 @@ public class EnemyShooterController : MonoBehaviour
         
     }
     
+    //Coroutine for Enemy FireRate
     IEnumerator ShootRoutine()
     {
         float fireRate = Random.Range(2, EnemyFireRate);
@@ -34,9 +36,9 @@ public class EnemyShooterController : MonoBehaviour
         }
     }
 
+    
     void UpdateAliveEnemies()
     {
-        
         aliveEnemies.Clear();
         foreach (Transform child in transform)
         {
@@ -47,11 +49,12 @@ public class EnemyShooterController : MonoBehaviour
         }
     }
 
+    //Choose Enemies To Shoot
     void ShootFromRandomEnemies()
     {
         if (aliveEnemies.Count == 0) return;
 
-        int shots = Mathf.Min(numberOfShooters, aliveEnemies.Count);
+        int shots = Math.Min(numberOfShooters, aliveEnemies.Count);
         List<Transform> selectedEnemies = new List<Transform>();
 
         while (selectedEnemies.Count < shots)

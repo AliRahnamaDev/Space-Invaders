@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class EnemyGroupController : MonoBehaviour
 {
+    //This script control the parent of enemies 
     private Rigidbody2D rb2d;
     public float moveSpeed = 2f;
     public float moveDownAmount = 0.5f;
@@ -25,6 +23,7 @@ public class EnemyGroupController : MonoBehaviour
         {
             rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
         }
+        //Algorithm to find the most right and the most left enemies and detect the accident
         float leftMost = 10000f;
         float rightMost = -10000f;
         

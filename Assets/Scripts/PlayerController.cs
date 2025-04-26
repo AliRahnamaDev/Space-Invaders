@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float MaxScore=1000;
     void Start()
     {
+        //Player Rb and animator component
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
       
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Health < 1)
         {
+            //Lose
             animator.SetBool("distroy", true);
             Destroy(gameObject,1f);
             SceneManager.LoadScene(2);
@@ -34,27 +34,32 @@ public class PlayerController : MonoBehaviour
         shooting();
     }
 
+    //Player FireRate
     IEnumerator DistaceBeetweenShots()
     {
         canshoot = false;
         yield return new WaitForSeconds(1/FireRate);
         canshoot = true;
     }
+    
+    //player shoot Mechanic
     private void shooting()
     {
         if (Input.GetKeyDown(KeyCode.Space)&&canshoot)
         {
             StartCoroutine(DistaceBeetweenShots());
             GameObject bullet = Instantiate(Bullet1, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            Debug.Log(Bullet.speed);
         }
     }
+    
+    //Player Movement Mechanic
+    //Movement With access to Rb and velocity parameter  
     private void Move()
     {
         horizontal = Input.GetAxis("Horizontal");
         rb2d.velocity = new Vector2(horizontal * moveSpeed, rb2d.velocity.y);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemybullets"))
@@ -68,7 +73,8 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
+    
+    //Coroutine For GameOver
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1.7f);
