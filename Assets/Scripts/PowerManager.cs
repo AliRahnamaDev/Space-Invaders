@@ -37,6 +37,5 @@ public class PowerManager : MonoBehaviour
                 Destroy(currentObject);
         }
     }
-
 //dsfasdfs
 }
