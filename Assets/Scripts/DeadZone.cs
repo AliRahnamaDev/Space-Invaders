@@ -14,7 +14,7 @@ public class DeadZone : MonoBehaviour
     }
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2);
     }
 }

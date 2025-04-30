@@ -9,7 +9,6 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreText;
     private int score = 0;
     PlayerController player;
-    public GameManager gameManager;
     public void AddScore(int amount)
     {
         score += amount;
@@ -18,7 +17,6 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         player = FindObjectOfType<PlayerController>();
     }
 

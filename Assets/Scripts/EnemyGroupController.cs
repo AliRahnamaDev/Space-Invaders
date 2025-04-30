@@ -22,6 +22,7 @@ public class EnemyGroupController : MonoBehaviour
         else
         {
             rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
+            movingRight = false;
         }
         //Algorithm to find the most right and the most left enemies and detect the accident
         float leftMost = 10000f;

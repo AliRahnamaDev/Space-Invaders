@@ -18,11 +18,6 @@ public class EnemyShooterController : MonoBehaviour
     { 
         StartCoroutine(ShootRoutine());
     }
-
-    void Update()
-    {
-        
-    }
     
     //Coroutine for Enemy FireRate
     IEnumerator ShootRoutine()

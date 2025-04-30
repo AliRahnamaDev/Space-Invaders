@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    private MusicShotManager musicShotManager;
     private Animator animator;
     public Transform bulletSpawnPoint;
-    public GameObject Bullet1;
+    public GameObject Bullet;
     public float moveSpeed = 10f;
     private float horizontal;
     private Rigidbody2D rb2d;
@@ -14,8 +15,12 @@ public class PlayerController : MonoBehaviour
     public float FireRate;
     public float Health;
     public float MaxScore=1000;
+    public bool IsShooting = false;
+    public bool CanHit=true;
     void Start()
     {
+        //Access to script of MusicShotManager
+        musicShotManager = FindObjectOfType<MusicShotManager>();
         //Player Rb and animator component
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,6 +37,12 @@ public class PlayerController : MonoBehaviour
         }
         Move();
         shooting();
+       
+        if (IsShooting && FireRate >=3.01 )
+        {
+            musicShotManager.OnPlayerShoot();
+            //Play Music When it is in FireRate boost Mode
+        }
     }
 
     //Player FireRate
@@ -45,10 +56,15 @@ public class PlayerController : MonoBehaviour
     //player shoot Mechanic
     private void shooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space)&&canshoot)
+        if (Input.GetKey(KeyCode.Space)&&canshoot)
         {
             StartCoroutine(DistaceBeetweenShots());
-            GameObject bullet = Instantiate(Bullet1, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            GameObject bullet = Instantiate(Bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            IsShooting=true;
+        }
+        else
+        {
+            IsShooting=false;
         }
     }
     
@@ -60,11 +76,13 @@ public class PlayerController : MonoBehaviour
         rb2d.velocity = new Vector2(horizontal * moveSpeed, rb2d.velocity.y);
     }
     
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemybullets"))
+        if (other.CompareTag("Enemybullets") && CanHit)
         {
             Health--;
+            StartCoroutine(distaceBeetweenHits());
         }
 
         if (other.CompareTag("Enemy"))
@@ -77,7 +95,14 @@ public class PlayerController : MonoBehaviour
     //Coroutine For GameOver
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(2);
+    }
+
+    IEnumerator distaceBeetweenHits()
+    {
+        CanHit = false;
+        yield return new WaitForSeconds(1.5f);
+        CanHit = true;
     }
 }

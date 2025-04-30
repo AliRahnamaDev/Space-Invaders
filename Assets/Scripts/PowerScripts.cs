@@ -4,20 +4,23 @@ using Random = UnityEngine.Random;
 
 public class PowerScripts : MonoBehaviour
 {
+    private MusicShotManager musicShotManager;
     private Transform transform;
     private EnemyGroupController enemyGroupController;
     private PlayerController player;
     public float abilityTimer;
-    public int ability;
+    private int ability;
     public float BoostPlayerspeed;
     public float BoostFireRate;
     public float NerfEnemyspeed;
     public bool isBoosted;
+     
 
     void Start()
     {
+        musicShotManager = FindObjectOfType<MusicShotManager>();
         transform = GetComponent<Transform>();
-        ability = Random.Range(0, 81);
+        ability = Random.Range(0, 101);
         player = FindObjectOfType<PlayerController>();
         enemyGroupController = FindObjectOfType<EnemyGroupController>();
     }
@@ -34,11 +37,14 @@ public class PowerScripts : MonoBehaviour
 
             }
             
-            if (ability >= 33 && ability <= 80)
+            if (ability >= 32 && ability <= 80 )
             {
                 //Boost FireRate
                 StartCoroutine(BoostPlayerFirerate());
+               
+
             }
+            
 
             if (ability >= 81 && ability <= 100)
             {

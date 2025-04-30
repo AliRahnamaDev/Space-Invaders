@@ -4,7 +4,6 @@ public class Bullet : MonoBehaviour
 {
     //This script Manage Player bullet Movement Add score And Reduce EnemyCount
     public ScoreManager scoreManager;
-    public static int score;
     private Rigidbody2D rb;
     public static float speed=20;
     public float lifeTime;

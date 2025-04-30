@@ -13,9 +13,8 @@ public class ShildScript : MonoBehaviour
     
     void Update()
     {
-        if(Health>=4) animator.SetInteger("Health",3);
-        if(Health >=2 && Health<4) animator.SetInteger("Health",2);
-        if(Health ==1) animator.SetInteger("Health",1);
+        if(Health >=4 && Health<=6) animator.SetInteger("Health",7);
+        if(Health >=1 && Health<=3) animator.SetInteger("Health",3);
         if(Health <= 0) Destroy(this.gameObject);
     }
 

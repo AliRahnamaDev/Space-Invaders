@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityTimer: 6
-  ability: 0
   BoostPlayerspeed: 1.5
-  BoostFireRate: 2
+  BoostFireRate: 1.85
   NerfEnemyspeed: 1.4
   isBoosted: 0
 --- !u!50 &758035167561023539

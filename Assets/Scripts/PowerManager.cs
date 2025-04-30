@@ -8,9 +8,8 @@ public class PowerManager : MonoBehaviour
     public GameObject objectToSpawn; 
 
     private GameObject currentObject;
-
-    public float ActivetimeFirstvalue;
-    public float ActivetimeSecondvalue;
+    
+    public float Activetimevalue = 12;
     [Header("Har Chand Sanyieh yebar biad")]
     public float first;
     public float second;
@@ -29,9 +28,9 @@ public class PowerManager : MonoBehaviour
                 Destroy(currentObject); 
 
             int index = Random.Range(0, spawnPoints.Length);
-            currentObject = Instantiate(objectToSpawn, spawnPoints[index].position, Quaternion.identity);
+            currentObject = Instantiate(objectToSpawn, spawnPoints[index].position, spawnPoints[index].rotation);
 
-            yield return new WaitForSeconds(Random.Range(ActivetimeFirstvalue, ActivetimeSecondvalue));
+            yield return new WaitForSeconds(Activetimevalue);
             if (currentObject != null)
                 Destroy(currentObject);
         }
